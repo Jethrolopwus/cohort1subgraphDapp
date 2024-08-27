@@ -16,7 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+      <title>Cohort2Dapps</title>
+      </head>
+      <body className={`${inter.className}relative w-full bg-gradient-to-br from-primary-50 from-116% via-primary-200 via-60% to-primary-100 t0-90%`}>
+        {children}
+      </body>
     </html>
   );
 }
+  
