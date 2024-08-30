@@ -6,7 +6,7 @@ import usdt from "@/public/assets/bnb.png";
 
 const Hero = () => {
   return (
-    <div className="flex justify-evenly">
+    <div className="flex mt-8 justify-evenly">
       <Link href="/usdt" className=" border-2 shadow-2xl hover:scale-110 transform transition-transform duration-[1s] ease-in-out w-1/3 tablet:w-full cursor-pointer">
         <div className="flex flex-col justify-center items-center py-5 space-y-6" >
           <Image src={bnb} alt="bnb" className="object-contain w-72" />
