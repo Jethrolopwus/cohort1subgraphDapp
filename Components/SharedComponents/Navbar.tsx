@@ -11,7 +11,7 @@ const Navbar = () => {
           <div className="flex items-center cursor-pointer">
             <Image src={BLogo} alt="Blockfuse Labs Logo" className="w-24" />
             <h1 className="font-bold text-white text-xl ml-0">
-              BLOCKFUSE LABS
+              TOKEN LENS
             </h1>
           </div>
         </Link>
