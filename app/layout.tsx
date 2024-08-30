@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-// import { useRouter } from "next/router";
+import Navbar from "@/Components/SharedComponents/Navbar";
+import Footer from "@/Components/SharedComponents/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +21,10 @@ export default function RootLayout({
       <head>
         <title>Cohort2Dapps</title>
       </head>
-      <body
-      // className={`${inter.className}relative w-full bg-gradient-to-br from-primary-50 from-116% via-primary-200 via-60% to-primary-100 t0-90%`}
-      >
-        {children}
+      <body className={`${inter.className}relative w-full `}>
+        <Navbar />
+        <section>{children}</section>
+        <Footer />
       </body>
     </html>
   );
