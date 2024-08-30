@@ -1,8 +1,11 @@
-"use client";
-import { fetchTransfers } from "@/Services/http";
-import { useRouter } from "next/router";
+'use client';
+
+import { fetchTransfers } from "@/Services/http"; // Replace with actual fetch logic
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { IoEyeOutline } from "react-icons/io5";
+
+// Utility function to truncate text
 const truncText = (str: string, length: number) => {
   if (str.length > length) {
     return str.slice(0, length) + "...";
@@ -10,6 +13,7 @@ const truncText = (str: string, length: number) => {
   return str;
 };
 
+// Modal Component for Transaction Details
 const DetailsModal = ({
   open,
   data,
@@ -26,7 +30,7 @@ const DetailsModal = ({
           open ? "visible" : "hidden"
         }`}
       >
-        <div className=" bg-white text-black h-fit w-[750px] mt-[5%] p-5 rounded-lg">
+        <div className=" bg-white text-black  h-fit w-[750px] mt-[5%] p-5 rounded-lg">
           <h2 className="text-2xl font-bold text-black mb-4 ">
             Transaction Details
           </h2>
@@ -64,7 +68,7 @@ const DetailsModal = ({
             <li className="flex gap-2">
               {" "}
               <strong>Value:</strong>
-              <span> {data?.value/10000}</span>
+              <span> {data?.value}</span>
             </li>
           </ul>
           <div className="flex justify-center items-center my-5">
@@ -85,14 +89,14 @@ const Page = () => {
   const [transfers, setTransfers] = useState([]);
   const [open, setOpen] = useState(false);
   const [transactionDetails, setTransactionDetails] = useState<any>({});
-  //   const router = useRouter();
+   //   const router = useRouter();
   //   const { apiKey, token } = router.query;
 
   useEffect(() => {
     async function getTransfers() {
-      // replace string with apiKey
-      const data = await fetchTransfers("93fa4c2400834278ed5a4a6ad58ce31e");
-      //   const data = await fetchTransfers(`${apiKey}`); // uncomment once router is fixed
+      // Replace the string with the actual API key or logic to fetch TRX transfers
+      const data = await fetchTransfers("YOUR_TRX_API_KEY_HERE");
+       //   const data = await fetchTransfers(`${apiKey}`); // uncomment once router is fixed
       if (data) {
         setTransfers(data.data.transfers);
       }
@@ -101,7 +105,7 @@ const Page = () => {
     getTransfers();
   }, []);
 
-  ////////Table Row
+  // Table Row
   const TableRow = ({
     openDetails,
     data,
@@ -115,11 +119,11 @@ const Page = () => {
     };
 
     return (
-      <div className=" grid grid-cols-7 justify-between items-center">
-        <div className="border h-10 flex  items-center">
+      <div className="grid grid-cols-7 justify-between items-center">
+        <div className="border h-10 flex items-center">
           <span
             onClick={handleDetails}
-            className="border p-2 mx-1 bg-blue-500 rounded cursor-pointer"
+            className="border p-2 mx-1 bg-red-500 cursor-pointer"
           >
             <IoEyeOutline />
           </span>
@@ -141,7 +145,7 @@ const Page = () => {
           {truncText(data.transactionHash, 20)}
         </div>
         <div className="border h-10 flex justify-center items-center">
-          {data.value/10000}
+          {data.value}
         </div>
       </div>
     );
@@ -163,9 +167,9 @@ const Page = () => {
       <div>
         {/* Navbar */}
         <div>
-          {/* <h2>Transactions for {token}</h2> */}
-          <h2 className="text-3xl font-bold my-3">Transactions for USDT</h2>
-          <div className=" grid grid-cols-7 justify-between thead">
+          {/* <h2>Transactions for TRX</h2> */}
+          <h2 className="text-3xl font-bold my-3">Transactions for SHIB</h2>
+          <div className="grid grid-cols-7 justify-between thead">
             <div className="border h-10 flex justify-center items-center">
               ID
             </div>
@@ -202,4 +206,5 @@ const Page = () => {
     </>
   );
 };
+
 export default Page;
